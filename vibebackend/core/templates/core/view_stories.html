@@ -1,0 +1,16 @@
+{% extends "core/base.html" %}
+
+{% block title %}Stories{% endblock %}
+
+{% block content %}
+<h1>Stories</h1>
+{% for story in stories %}
+    <div>
+        <p>{{ story.user.username }}: {{ story.content }}</p>
+        {% if story.image %}
+            <img src="{{ story.image.url }}" alt="Story image">
+        {% endif %}
+        <small>Posted on {{ story.created_at }}</small>
+    </div>
+{% endfor %}
+{% endblock %}

@@ -1,0 +1,17 @@
+{% extends "core/base.html" %}
+
+{% block title %}Posts{% endblock %}
+
+{% block content %}
+<h1>Posts</h1>
+{% for post in posts %}
+    <div>
+        <p>{{ post.user.username }}: {{ post.content }}</p>
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt="Post image">
+        {% endif %}
+        <small>Posted on {{ post.created_at }}</small>
+        <a href="{% url 'create_comment' post.id %}">Comment</a>
+    </div>
+{% endfor %}
+{% endblock %}

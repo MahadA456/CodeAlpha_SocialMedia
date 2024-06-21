@@ -1,0 +1,24 @@
+{% extends "core/base.html" %}
+
+{% block title %}{{ profile.user.username }}'s Profile{% endblock %}
+
+{% block content %}
+<h1>{{ profile.user.username }}'s Profile</h1>
+<p>Bio: {{ profile.bio }}</p>
+{% if profile.profile_pic %}
+    <img src="{{ profile.profile_pic.url }}" alt="{{ profile.user.username }}'s profile picture">
+{% endif %}
+<p>Followers: {{ profile.followers_count }}</p>
+<p>Following: {{ profile.following_count }}</p>
+<p>Profile: {% if profile.is_private %}Private{% else %}Public{% endif %}</p>
+<h2>Posts</h2>
+{% for post in posts %}
+    <div>
+        <p>{{ post.content }}</p>
+        {% if post.image %}
+            <img src="{{ post.image.url }}" alt="Post image">
+        {% endif %}
+        <small>Posted on {{ post.created_at }}</small>
+    </div>
+{% endfor %}
+{% endblock %}
