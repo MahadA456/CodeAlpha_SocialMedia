@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from django.utils import timezone
 from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
@@ -140,3 +141,7 @@ def edit_profile(request):
     else:
         form = ProfileForm(instance=request.user.profile)
     return render(request, 'core/edit_profile.html', {'form': form})
+@login_required
+def logout_view(request):
+    logout(request)
+    return redirect('login') 

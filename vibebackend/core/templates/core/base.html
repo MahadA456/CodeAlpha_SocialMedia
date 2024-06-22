@@ -17,7 +17,11 @@
             <li><a href="{% url 'send_message' %}">Send Message</a></li>
             <li><a href="{% url 'profile' username=request.user.username %}">Profile</a></li>
             <li><a href="{% url 'edit_profile' %}">Edit Profile</a></li>
-            <li><a href="{% url 'logout' %}">Logout</a></li>
+            <form id="logout-form" action="{% url 'logout' %}" method="POST" style="display: none;">
+                {% csrf_token %}
+                <button type="submit">Logout</button>
+            </form>
+            <a href="#" onclick="document.getElementById('logout-form').submit();">Logout</a>
         </ul>
     </nav>
 

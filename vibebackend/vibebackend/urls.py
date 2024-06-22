@@ -21,6 +21,8 @@ urlpatterns = [
     path('edit_profile/', views.edit_profile, name='edit_profile'),
     path('accounts/', include('django.contrib.auth.urls')),  # Include default auth URLs
     path('signup/', views.signup, name='signup'),
+    path('accounts/logout/', views.logout_view, name='logout'),
+    
 ]
 
 from django.conf import settings
