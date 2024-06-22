@@ -1,23 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>{% block title %}My Social Media Platform{% endblock %}</title>
+    <title>VibeLink</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'core/style.css' %}">
 </head>
 <body>
     <nav>
         <ul>
-            <li><a href="{% url 'view_posts' %}">Home</a></li>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li><a href="{% url 'view_posts' %}">Posts</a></li>
             <li><a href="{% url 'create_post' %}">Create Post</a></li>
             <li><a href="{% url 'view_stories' %}">Stories</a></li>
             <li><a href="{% url 'create_story' %}">Create Story</a></li>
             <li><a href="{% url 'inbox' %}">Inbox</a></li>
             <li><a href="{% url 'send_message' %}">Send Message</a></li>
-            <li><a href="{% url 'profile' username=request.user.username %}">My Profile</a></li>
+            <li><a href="{% url 'profile' username=request.user.username %}">Profile</a></li>
             <li><a href="{% url 'edit_profile' %}">Edit Profile</a></li>
             <li><a href="{% url 'logout' %}">Logout</a></li>
         </ul>
     </nav>
-    {% block content %}{% endblock %}
+
+    {% block content %}
+    {% endblock %}
 </body>
 </html>
